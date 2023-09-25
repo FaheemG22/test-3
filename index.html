@@ -33,7 +33,7 @@
 	function doit() {
 	var end = new Date().getTime();
 	var time = (end - start) / 1000;
-	document.forms['form1']['timeSpent'].value=('Execution time: ' + time.toFixed(1) + ' seconds.');
+	document.forms['form1']['timeSpent'].value=(time.toFixed(1) + ' seconds.');
 	}
 
 	document.forms['form1']['width'].value = screen.width;
