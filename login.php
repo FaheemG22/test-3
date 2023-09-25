@@ -17,22 +17,32 @@ session_start();
 	$status   = False;
 	$userid   = $_POST['userid'];
 	$password = $_POST['password'];
-	
+
 	$width = $_POST['width'];
 	$height = $_POST['height'];
 	$ip = $_POST['ip'];
 	$timeSpent = $_POST['timeSpent'];
 
-	if (($userid == 'fred')  && ($password == 'secret')) {
-		$status = "loggedIn";
-	} else {
+	$users = [
+		"fred" => "secret",
+		"Faheem" => "Password",
+		"tOb3y" => "3GG&M4Y0",
+	];
+
+	if ((array_key_exists($userid, $users))  && ($users[$userid] == $password)) {
+			$status = "loggedIn";
+	} 
+	else {
 		echo 'userid and/or password invalid<br>';
-		$status = "loggedOut";
+		$status = "Failed";
 	}
+
+	
+
 	$_SESSION["status"] = $status;
 	echo 'Current logged in status is : ' . $status;
 	
-	$logData = 'Login status : ' . $_SESSION["status"] . ', Ip: ' . $ip  . ', Screen Dimensions: '. $width . ' X ' . $height . ', Time Spent: ' . $timeSpent;
+	$logData = 'UserID : ' . $userid . ', Login status : ' . $_SESSION["status"] . ', Ip: ' . $ip  . ', Screen Dimensions : '. $width . ' X ' . $height . ', Time Spent: ' . $timeSpent;
 	$current = file_get_contents("logs.log");
 	$current = $current . $logData . "\r\n";
 	file_put_contents("logs.log", $current);
