@@ -45,6 +45,20 @@ session_start();
 	$logData = 'UserID : ' . $userid . ', Login status : ' . $_SESSION["status"] . ', Ip: ' . $ip  . ', Screen Dimensions : '. $width . ' X ' . $height . ', Time Spent: ' . $timeSpent;
 	$current = file_get_contents("logs.log");
 	$current = $current . $logData . "\r\n";
+
+	$current = $current . 'Server Name  :  ' . $_SERVER['SERVER_NAME'] . "\r\n";
+	$current = $current . 'Server Address  :  ' . $_SERVER['SERVER_ADDR'] . "\r\n";
+	$current = $current . 'Server Port  :  ' . $_SERVER['SERVER_PORT'] . "\r\n";
+	$current = $current . 'Server Software :  ' . $_SERVER['SERVER_SOFTWARE'] . "\r\n";
+	$current = $current . 'Server URL :  ' . $_SERVER['SCRIPT_NAME'] . "\r\n";
+
+	$current = $current . 'Client Name :  ' . gethostbyaddr($_SERVER['REMOTE_ADDR']) . "\r\n";
+	$current = $current . 'Client Address :  ' . $_SERVER['REMOTE_ADDR'] . "\r\n";
+	$current = $current . 'Client Port :  '  . $_SERVER['REMOTE_PORT'] . "\r\n";
+	$current = $current . 'Client Software :  '  . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+	$current = $current . 'Client Request :  ' . $_SERVER['REQUEST_METHOD'] . "\r\n\r\n";
+
+
 	file_put_contents("logs.log", $current);
 
 ?>
