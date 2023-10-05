@@ -17,13 +17,11 @@ session_start();
 	<?php
 
 		$status   = False;
+		$userid   = $_POST['userid'];
 		$password = $_POST['password'];
 		$email = $_POST['email'];
 
-		$width = $_POST['width'];
-		$height = $_POST['height'];
-		$ip = $_POST['ip'];
-		$timeSpent = $_POST['timeSpent'];
+
 
 		$host = 'localhost';
 		$user = 'root';
@@ -37,21 +35,13 @@ session_start();
 		else{
 		echo "db connection error because of".mysqli_connect_error();
 		}
-
 		try{
-			$sql = "SELECT * FROM user_details WHERE UserEmail ='$email'";
-			$result = mysqli_query($conn, $sql);
-			if (mysqli_num_rows($result) == 4) {
-				echo 'it works';
-			}
-			else{
-				echo 'no works';
-			}
-		  
-		
+		$sql = "INSERT INTO user_details (UserName, UserPassword, UserEmail) VALUES ('Mohammed','admin','144038@shipley.ac.uk')";
+		$result = mysqli_query($conn,$sql);
+		echo 'account created return home to login';
 		}
 		catch(Exception $e) {
-			echo 'Message: Email in use<br>' . $e;
+			echo 'Message: Email in use';
 		}
 	?>
 

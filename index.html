@@ -4,6 +4,8 @@
 	<title>Test Signon - v0.3</title>
 </head>
 
+
+
 <body>
 
 	<h1>Test Signon - v0.3</h1>
@@ -14,14 +16,16 @@
 		<input type="hidden" name="ip" id="ip">
 		<input type="hidden" name="timeSpent" id="timeSpent">
 
-		userid:   <input type="text" name="userid"><br>
+		email:   <input type="text" name="email"><br>
 		password: <input type="password" name="password"><br>
 
 		<input type="submit" value="Login" onclick="doit()" formaction="login.php"> 
 		<input type="submit" value="Logout" formaction="logout.php">
 		<br> 
 		<input type="submit" value="View Secure" formaction="securePage.php"> 
-		<input type="submit" value="View Non-Secure" formaction="nonsecurePage.php"> 
+		<input type="submit" value="View Non-Secure" formaction="nonsecurePage.php">
+		<br> 
+		<input type="submit" value="Register" formaction="register.html"> 
 	</form>
 
 </body>
@@ -42,7 +46,8 @@
 	fetch('https://api.ipify.org?format=json')
 	  .then(response => response.json())
 	  .then(data => document.forms['form1']['ip'].value =(data.ip));
-	</script>
+	  
+</script>
 
 
 	
