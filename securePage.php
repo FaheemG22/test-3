@@ -10,16 +10,27 @@ session_start();
 </head>
 
 <?php
-if ($_SESSION["status"] == 'loggedIn') {
-	echo 'logged in <br><br>';
-	echo 'secret content goes here';
-} else {
+try{
+	if (isset($_SESSION["status"])){
+		if ($_SESSION["status"] == 'loggedIn') {
+			echo 'Welcome Back: ' . $_SESSION['name'] . '<br><br>';
+			echo 'secret content goes here';
+			
+		}
+		else{
+			echo 'You are not logged in - page unavaialbe.';
+		}
+	}
+	else{
+		echo 'You are not logged in - page unavaialbe.';
+	}
+}
+catch(Exception $e){
 	echo 'You are not logged in - page unavaialbe.';
 }
-
 ?>
 
-	<form name='form1' id='form1' action="index.html" method="get">
+	<form name='form1' id='form1' action="index.php" method="get">
 		Home : <input type="submit" value="Home">
 	</form>
 	

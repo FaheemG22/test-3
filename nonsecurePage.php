@@ -10,7 +10,7 @@
 	
 Non secure content goes here
 
-	<form name='form1' id='form1' action="index.html" method="get">
+	<form name='form1' id='form1' action="index.php" method="get">
 		Home : <input type="submit" value="Home">
 	</form>
 		
