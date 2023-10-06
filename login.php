@@ -12,8 +12,6 @@ session_start();
 <body>
 	<h1>Test Signon - v0.3</h1>
 
-
-
 	<?php
 
 		$status   = False;
@@ -26,36 +24,50 @@ session_start();
 		$timeSpent = $_POST['timeSpent'];
 
 		$host = 'localhost';
-		$user = 'root';
-		$password = '';
+		$S_user = 'root';
+		$S_password = '';
 		$db ='user_details';
 
-		$conn = mysqli_connect($host,$user,$password,$db);// you can select db separately as you did already
+		$conn = mysqli_connect($host,$S_user,$S_password,$db);// you can select db separately as you did already
 		if($conn){
-			echo '<br><br>' . 'Connection Successfull<br>';
+			echo 'Database Connection Successfull<br><br>';
 		}
 		else{
 		echo "db connection error because of".mysqli_connect_error();
 		}
-
-		try{
-			$sql = "SELECT * FROM user_details WHERE UserEmail ='$email'";
-			$result = mysqli_query($conn, $sql);
-			if (mysqli_num_rows($result) == 4) {
-				echo 'it works';
-			}
-			else{
-				echo 'no works';
-			}
-		  
 		
+		try{
+		
+			$sql = "SELECT * FROM user_details 
+			WHERE UserEmail='$email' 
+			AND UserPassword = '$password'";
+			$result = mysqli_query($conn, $sql);
+		
+			if (mysqli_num_rows($result) == 1) {
+				echo 'You are now logged in :) <br>';
+				$_SESSION["status"] = 'loggedIn';
+				$sql = "SELECT UserName FROM user_details 
+				WHERE UserEmail='$email' 
+				AND UserPassword = '$password'";
+				$result = mysqli_query($conn, $sql);
+				
+				while($row = $result->fetch_assoc()) {
+					$_SESSION["name"] = $row["UserName"];
+				  }
+				echo "Welcome Back: " . $_SESSION['name'];
+		
+			}
+			else {
+				echo 'Incorrect Email or password';
+			}
+			
 		}
 		catch(Exception $e) {
-			echo 'Message: Email in use<br>' . $e;
+			echo 'Incorrect Email or password';
 		}
 	?>
 
-	<form name='form1' id='form1' action="index.html" method="get">
+	<form name='form1' id='form1' action="index.php" method="get">
 		<input type="submit"  value="Home">
 	</form>
 

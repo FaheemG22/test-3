@@ -1,10 +1,19 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <HTML>
+
 <head>
 	<title>Test Signon - v0.3</title>
 </head>
 
+<?php
 
+
+?>
 
 <body>
 
@@ -16,8 +25,8 @@
 		<input type="hidden" name="ip" id="ip">
 		<input type="hidden" name="timeSpent" id="timeSpent">
 
-		email:   <input type="text" name="email"><br>
-		password: <input type="password" name="password"><br>
+		Email:   <input type="text" name="email"><br>
+		Password: <input type="password" name="password"><br>
 
 		<input type="submit" value="Login" onclick="doit()" formaction="login.php"> 
 		<input type="submit" value="Logout" formaction="logout.php">
@@ -25,7 +34,7 @@
 		<input type="submit" value="View Secure" formaction="securePage.php"> 
 		<input type="submit" value="View Non-Secure" formaction="nonsecurePage.php">
 		<br> 
-		<input type="submit" value="Register" formaction="register.html"> 
+		<input type="submit" value="Register" formaction="register.php"> 
 	</form>
 
 </body>
