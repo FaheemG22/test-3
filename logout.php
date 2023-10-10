@@ -1,5 +1,6 @@
 <?php session_start(); 
 session_destroy(); 
-header("location:index.php");  
+$last = $_SERVER['HTTP_REFERER'];
+header("location:$last");  
 exit;
 ?>
