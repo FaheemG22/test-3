@@ -9,19 +9,15 @@ session_start();
 	<title>Test Signon - v0.3</title>
 </head>
 
+<?php include "./header.php" ?>
+
 <body>
 	<h1>Test Signon - v0.3</h1>
+	
 
 	<?php
-
-		$status   = False;
 		$password = $_POST['password'];
 		$email = $_POST['email'];
-
-		$width = $_POST['width'];
-		$height = $_POST['height'];
-		$ip = $_POST['ip'];
-		$timeSpent = $_POST['timeSpent'];
 
 		$host = 'localhost';
 		$S_user = 'root';
@@ -45,7 +41,7 @@ session_start();
 		
 			if (mysqli_num_rows($result) == 1) {
 				echo 'You are now logged in :) <br>';
-				$_SESSION["status"] = 'loggedIn';
+				$_SESSION["status"] = 'loggedin';
 				$sql = "SELECT UserName FROM user_details 
 				WHERE UserEmail='$email' 
 				AND UserPassword = '$password'";
@@ -54,7 +50,8 @@ session_start();
 				while($row = $result->fetch_assoc()) {
 					$_SESSION["name"] = $row["UserName"];
 				  }
-				echo "Welcome Back: " . $_SESSION['name'];
+				$last = $_SERVER['HTTP_REFERER'];
+				header("location:$last");  
 		
 			}
 			else {
@@ -66,10 +63,6 @@ session_start();
 			echo 'Incorrect Email or password';
 		}
 	?>
-
-	<form name='form1' id='form1' action="index.php" method="get">
-		<input type="submit"  value="Home">
-	</form>
 
 </body>
 </HTML>

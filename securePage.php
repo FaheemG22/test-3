@@ -8,12 +8,14 @@ session_start();
 <head>
 	<title>Test Signon - v0.1</title>
 </head>
-
+<body>
+	<?php include "./header.php" ?>
+	<br>
+	<br>
 <?php
 try{
 	if (isset($_SESSION["status"])){
-		if ($_SESSION["status"] == 'loggedIn') {
-			echo 'Welcome Back: ' . $_SESSION['name'] . '<br><br>';
+		if ($_SESSION["status"] == 'loggedin') {
 			echo 'secret content goes here';
 			
 		}
@@ -29,11 +31,9 @@ catch(Exception $e){
 	echo 'You are not logged in - page unavaialbe.';
 }
 ?>
-
-	<form name='form1' id='form1' action="index.php" method="get">
-		Home : <input type="submit" value="Home">
-	</form>
 	
 </body>
+
+
 
 </html>
