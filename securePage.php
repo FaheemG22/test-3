@@ -1,15 +1,9 @@
-<?php
-// Start the session
-session_start();
-?>
-
 <!DOCTYPE html>
 <HTML>
+<?php include "./header.php" ?>
 <head>
-	<title>Test Signon - v0.1</title>
 </head>
 <body>
-	<?php include "./header.php" ?>
 <?php
 try{
 	if (isset($_SESSION["status"])){

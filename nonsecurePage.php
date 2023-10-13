@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <HTML>
-<head>
-	<title>Test Signon - v0.3</title>
-</head>
-
 <?php include "./header.php" ?>
+<head>
+</head>
 
 <body>
 	

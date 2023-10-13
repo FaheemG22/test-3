@@ -1,21 +1,19 @@
-<?php
-// Start the session
-session_start();
-?>
-
 <!DOCTYPE html>
-<HTML>
+<HTML lang="en">
 
-<head>
-	<title>Test Signon - v0.3</title>
-</head>
 
-<?php include "./header.php" ?>
 
+<title>Home</title>
+<?php 
+header("Cache-Control: max-age=3440");
+include "./header.php" ;
+
+?>
 <body>
 
+Home
 
-
+<!-- Fallback application metadata for legacy browsers -->
 </body>
 
 

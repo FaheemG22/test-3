@@ -1,0 +1,14 @@
+<ifmodule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType assets/css "access plus 1 day"
+    ExpiresDefault "access plus 0 days"
+</ifmodule>
+
+<ifModule mod_headers.c>
+    
+    
+    #1 DAYS for
+    <filesmatch ".(css|png|gif)$">
+    Header set Cache-Control "max-age=8640, public, must-revalidate"
+    </filesmatch>
+</ifModule>

@@ -1,11 +1,28 @@
 .input-header {
-    height:40px;
+    min-height:40px;
+    height: 30px;
     margin-right:5px;
     border-radius:10px;
     width: 220px;
+    font-size: medium;
+    
 }
 
 .input-header:hover {
     color:black;
+    height: 50px;
     width: 250px;
+    font-size: x-large;
+}
+
+.custom {
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px;
+    width: 100px;
+}
+
+.custom:hover {
+    height: 50px;
+    width: 125px;
 }
