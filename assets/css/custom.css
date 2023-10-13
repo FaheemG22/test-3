@@ -1,4 +1,5 @@
 .input-header {
+    float: right;
     min-height:40px;
     height: 30px;
     margin-right:5px;
@@ -13,18 +14,22 @@
     height: 50px;
     width: 250px;
     font-size: x-large;
+    margin: 0px;
 }
 
 .custom {
+    bottom: 0;
     float: right;
     margin: 10px;
     height: 60px;
     width: 150px;
+    font-size:auto;
 }
 
 .custom:hover {
     margin-bottom: 0px;
     margin-right: 0px;
+    margin-left: 0px;
     height: 70px;
-    width: 175px;
+    width: 160px;
 }
