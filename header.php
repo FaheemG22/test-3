@@ -13,8 +13,8 @@ session_start();
 <link rel="stylesheet" href="assets/css/custom.css">
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:white;">
-  <div class="container-fluid" style="height:75px;"> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:white;min-height:100px;height:20vw;max-height:150px">
+  <div class="container-fluid  bg-dark"> 
     <a class="navbar-brand" href="index.php">Test-Signon - V0.4</a>
 
 
@@ -51,30 +51,33 @@ session_start();
           //Registry
           elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'y') {
           echo '
-          <input class="input-header" type="text" name="userid" placeholder="Username" required>
-          <input class="input-header" type="text" name="email" placeholder="Email" required>
-          <input class="input-header" type="password" name="password" placeholder="Password">
+          <input class="input-header" type="text" name="userid" id="userid" placeholder="Username" required>
+          <input class="input-header" type="text" name="email" id="email" placeholder="Email" required>
+          <input class="input-header" type="password" name="password" id="password" placeholder="Password" required>
+          <div>
           <input class="btn btn-success custom" type="submit" value="Register" formaction="submit.php">
           </form>
           <form method="post">
           <button class="btn btn-outline-danger custom" type="submit" name="unreg"> Cancel </button>
           </form>
+          </div>
           ';
           }
           // Login
           else {
           echo '
-          <input class="input-header" type="text" name="email" placeholder="Email" required>
-          <input class="input-header" type="password" name="password" placeholder="Password">
+          <input class="input-header" type="text" name="email" id="email" placeholder="Email" required>
+          <input class="input-header" type="password" name="password" id="password" placeholder="Password" required>
+          <div>
           <input style="margin-right:10px;" class="btn btn-success custom" type="submit" value="Login" formaction="login.php">
           </form> 
           <form method="post">
           <input class="btn btn-danger custom" type="submit" value="Register" name="reg">
           </form>
+          </div>
           ';
           } 
         ?>
       </form>
   </div>
 </nav>
-

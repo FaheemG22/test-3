@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <HTML lang="en">
-
-
-
 <title>Home</title>
 <?php 
-header("Cache-Control: max-age=3440");
+header("Cache-Control: max-age=300");
 include "./header.php" ;
 
 ?>
