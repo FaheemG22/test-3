@@ -10,8 +10,6 @@ session_start();
 </head>
 <body>
 	<?php include "./header.php" ?>
-	<br>
-	<br>
 <?php
 try{
 	if (isset($_SESSION["status"])){

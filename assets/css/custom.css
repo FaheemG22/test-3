@@ -1,0 +1,11 @@
+.input-header {
+    height:40px;
+    margin-right:5px;
+    border-radius:10px;
+    width: 220px;
+}
+
+.input-header:hover {
+    color:black;
+    width: 250px;
+}

@@ -37,8 +37,10 @@ session_start();
 		VALUES ('$userid','$password','$email')";
 		
 		$result = mysqli_query($conn,$sql);
-		
+		$last = $_SERVER['HTTP_REFERER'];
+		header("location:$last");
 		echo 'Account created return home to login';
+		$_SESSION['register'] = 'n';
 		}
 		catch(Exception $e) {
 			echo 'Message: Email in use';
