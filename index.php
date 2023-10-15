@@ -2,7 +2,7 @@
 <HTML lang="en">
 <title>Home</title>
 <?php 
-header("Cache-Control: max-age=300");
+header("Cache-Control: max-age=1");
 include "./header.php" ;
 
 ?>
