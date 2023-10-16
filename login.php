@@ -1,6 +1,6 @@
 <!DOCTYPE html>	
 <HTML>
-<?php include "./header.php" ?>
+<?php include "./header.php"?>
 <head>
 </head>
 
@@ -17,7 +17,7 @@
 
 		$conn = mysqli_connect($host,$S_user,$S_password,$db);// you can select db separately as you did already
 		if($conn){
-			echo 'Database Connection Successfull<br><br>';
+			
 		}
 		else{
 		echo "db connection error because of".mysqli_connect_error();
@@ -31,7 +31,6 @@
 			$result = mysqli_query($conn, $sql);
 		
 			if (mysqli_num_rows($result) == 1) {
-				echo 'You are now logged in :) <br>';
 				$_SESSION["status"] = 'loggedin';
 				$sql = "SELECT UserName FROM user_details 
 				WHERE UserEmail='$email' 
@@ -42,7 +41,8 @@
 					$_SESSION["name"] = $row["UserName"];
 				  }
 				$last = $_SERVER['HTTP_REFERER'];
-				header("location:$last");  
+				header("location:$last");
+				exit;  
 		
 			}
 			else {

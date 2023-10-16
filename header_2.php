@@ -1,3 +1,4 @@
+
 <?php
 // Start the session
 session_start();
@@ -27,6 +28,7 @@ session_start();
         </li>
     </ul>
 
+      <form name='form1' id='form1' method="post">
         <?php
 
           if(array_key_exists('reg', $_POST)) { 
@@ -41,82 +43,39 @@ session_start();
           function unreg() { 
               $_SESSION['register'] = 'n'; 
           } 
+
+          if (isset($_SESSION['status']) && $_SESSION['status'] == 'loggedin') {//Logged in
+          echo 'Logged in as : ' . $_SESSION['name'] . ' ';
+          echo '<input class="btn btn-outline-danger" type="submit" value="Logout" formaction="logout.php">';
+          }
+          elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'y') {//Registry
+          echo '
+          <input class="input-header" type="text" name="userid" id="userid" placeholder="Username" required>
+          <input class="input-header" type="text" name="email" id="email" placeholder="Email" required>
+          <input class="input-header" type="password" name="password" id="password" placeholder="Password" required>
+          <div class="flex-container">
+          <div><input class="btn btn-success custom" type="submit" value="Register" formaction="submit.php"></div>
+          </form>
+          <form method="post">
+          <div><button class="btn btn-outline-danger custom" type="submit" name="unreg"> Cancel </button></div>
+          </form>
+          </div>
+          ';
+          }
+          else {// Login
+          echo '
+          <input class="input-header" type="text" name="email" id="email" placeholder="Email" required>
+          <input class="input-header" type="password" name="password" id="password" placeholder="Password" required>
+          <div class="flex-container">
+          <div><input style="margin-right:10px;" class="btn btn-success custom" type="submit" value="Login" formaction="login.php"></div>
+          </form> 
+          <form method="post">
+          <div><input class="btn btn-danger custom" type="submit" value="Register" name="reg"></div>
+          </form>
+          </div>
+          ';
+          } 
         ?>
-
-          
-          <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'loggedin') : ?>
-            <?php echo 'Logged in as : ' . $_SESSION['name'] . ' '; ?>
-            <form name='form3' id='form1' method="post">
-            <input class="btn btn-outline-danger" type="submit" value="Logout" formaction="logout.php">'
-            </form>
-          <?php else : ?>
-            <div>
-            <button class="btn btn-success custom" onclick="document.getElementById('login_form').style.display='block'"> Login </button>
-            <button class="btn btn-danger custom" onclick="document.getElementById('sign_up_form').style.display='block'"> Register </button>
-            </div>
-            
-            <?php endif; ?>
-
-        
       </form>
   </div>
 </nav>
-
-
-<!-- Register -->
-<div name='form1' id="sign_up_form" class="modal" method="post">
-  <span onclick="document.getElementById('sign_up_form').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form autocomplete="on"  class="modal-content">
-    <div class="container">
-      <h1>Register</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      
-      <input type="text" name="userid" placeholder="Username" required>
-      <input type="text" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('sign_up_form').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" formaction="submit.php">Sign Up</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<!-- Login -->
-
-<div name='form2' id="login_form" class="modal" method="post">
-  <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form autocomplete="on" class="modal-content">
-    <div class="container">
-      <h1>Login</h1>
-      <p>Please fill in this form to Login.</p>
-      <hr>
-
-      <input type="text" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('login_form').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" formaction="login.php">Login</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<script>
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == document.getElementById('sign_up_form') || event.target == document.getElementById('login_form')) {
-    document.getElementById('sign_up_form').style.display = "none";
-    document.getElementById('login_form').style.display = "none";
-  }
-}
-
-</script>
